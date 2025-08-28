@@ -27,6 +27,14 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
+app.get('/api/v1/health', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Server is healthy',
+    timestamp: new Date().toISOString()
+  });
+});
+
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT);
