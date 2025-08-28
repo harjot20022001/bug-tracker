@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: bug-tracker-backend
+    env: node
+    plan: free
+    buildCommand: cd bug-tracking-system/backend && npm install
+    startCommand: cd bug-tracking-system/backend && npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRE
+        value: 30d
+      - key: FRONTEND_URL
+        sync: false
